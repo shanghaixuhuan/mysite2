@@ -13,17 +13,19 @@ class BasicInformation(models.Model):
         return self.typename
 
 
-class Education(models.Model):
+class Experience(models.Model):
     order = models.IntegerField()
-    time = models.CharField(max_length=20)
-    period = models.CharField(max_length=20)
-    school = models.CharField(max_length=30)
-    major = models.CharField(max_length=40)
-    college = models.CharField(max_length=40)
-    detail = models.TextField()
+    sector = models.CharField(max_length=20, blank=True, default="")
+    type = models.CharField(max_length=20)
+    time = models.CharField(max_length=20, blank=True, default="")
+    period = models.CharField(max_length=20, blank=True, default="")
+    event = models.CharField(max_length=30, blank=True, default="")
+    title = models.CharField(max_length=40, blank=True, default="")
+    subtitle = models.CharField(max_length=40, blank=True, default="")
+    detail = models.TextField(blank=True, default="")
 
     class Meta:
-        ordering = ('order',)
+        ordering = ('type', 'order',)
 
     def __str__(self):
-        return self.period
+        return self.title
